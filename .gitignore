@@ -1,0 +1,12 @@
+# dependências
+node_modules/
+
+# saída gerada (links + QR codes) — fica só no seu PC
+output/
+
+# SUA lista real de prospects — NUNCA vai pro GitHub
+prospects.csv
+
+# sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+{
+  "name": "damata-mail-outreach",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing page de prospecção da Damata Coffee + gerador de links/QR por prospect.",
+  "scripts": {
+    "links": "node generate-links.mjs"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damata Coffee — Wholesale Program</title>
+
+  <!-- SEO / Social -->
+  <meta name="description" content="Brazilian specialty coffee for short-term rentals. Your brand on the bag, starting at $7 per stay.">
+  <meta property="og:title" content="Damata Coffee — A gift for you">
+  <meta property="og:description" content="We sent you something. Brazilian specialty coffee, direct from the farm, with your brand on the bag.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://vinny-malop.github.io/damata-mail-outreach/assets/farm.jpg">
+
+  <!-- ============================================================== -->
+  <!--  TRACKING IDS — preencha UMA vez (vale para todos os prospects) -->
+  <!--  Deixe começando com "YOUR_" para manter o tracking desligado.  -->
+  <!-- ============================================================== -->
+  <script>
+    window.DAMATA_CONFIG = {
+      META_PIXEL_ID: 'YOUR_META_PIXEL_ID',   // Meta (Facebook/Instagram) Pixel — só os números
+      GA4_ID:        'YOUR_GA4_ID',           // Google Analytics 4 — formato G-XXXXXXXXXX
+      CLARITY_ID:    'YOUR_CLARITY_ID'        // Microsoft Clarity — ID do projeto
+    };
+
+    // Nome do prospect vindo da URL  (ex.: ?c=Acme%20Inc)
+    window.DAMATA_PROSPECT = (new URLSearchParams(location.search).get('c') || '').trim();
+
+    function damataEnabled(id){ return id && id.indexOf('YOUR_') !== 0; }
+
+    // gtag precisa existir no escopo global
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+
+    // ---- Meta Pixel (PageView + evento QROpen p/ públicos de remarketing/lookalike) ----
+    if (damataEnabled(DAMATA_CONFIG.META_PIXEL_ID)) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', DAMATA_CONFIG.META_PIXEL_ID);
+      fbq('track', 'PageView');
+      fbq('trackCustom', 'QROpen', { prospect: DAMATA_PROSPECT || 'unknown' });
+    }
+
+    // ---- Google Analytics 4 ----
+    if (damataEnabled(DAMATA_CONFIG.GA4_ID)) {
+      var gaScript = document.createElement('script'); gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + DAMATA_CONFIG.GA4_ID;
+      document.head.appendChild(gaScript);
+      gtag('js', new Date());
+      gtag('config', DAMATA_CONFIG.GA4_ID);
+      gtag('event', 'qr_open', { prospect: DAMATA_PROSPECT || 'unknown' });
+    }
+
+    // ---- Microsoft Clarity ----
+    if (damataEnabled(DAMATA_CONFIG.CLARITY_ID)) {
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", DAMATA_CONFIG.CLARITY_ID);
+      window.clarity && window.clarity('set', 'prospect', DAMATA_PROSPECT || 'unknown');
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F5F0E8;
+      --cream-2:  #EDE8DC;
+      --brown:    #2C1A0E;
+      --brown-mid:#6B4226;
+      --gold:     #C8965A;
+      --text:     #3A2A1A;
+      --muted:    #8A7A6A;
+      --white:    #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/farm.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(245, 240, 232, 0.62);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      margin-bottom: 20px;
+    }
+
+    .hero-greeting {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-greeting em {
+      font-style: italic;
+      color: var(--brown-mid);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--brown);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown);
+      padding: 16px 40px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #b5813f; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-scroll span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(200,150,90,0.8), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ── LOGO BAR ── */
+    .logo-bar {
+      background: var(--brown);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .logo-bar img {
+      height: 48px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .logo-bar-text {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 32px 0;
+    }
+
+    /* ── WHAT'S IN THE BOX ── */
+    .box-section {
+      background: var(--brown);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .box-section .section-title { color: var(--white); }
+    .box-section .section-eyebrow { color: var(--gold); }
+    .box-section .section-body { color: rgba(255,255,255,0.6); margin: 0 auto; }
+
+    .box-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 48px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .box-item {
+      flex: 1 1 180px;
+      max-width: 200px;
+      text-align: center;
+    }
+
+    .box-icon {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 22px;
+    }
+
+    .box-item-title {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .box-item-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ── PRODUCTS ── */
+    .products {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 48px;
+      background: var(--cream-2);
+    }
+
+    .product-card {
+      background: var(--cream);
+      padding: 40px 32px;
+    }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--brown);
+      padding: 4px 10px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--brown);
+      margin-bottom: 12px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .product-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-features li {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .product-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 500;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── ROASTER PHOTO ── */
+    .photo-section {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .photo-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(44,26,14,0.85) 40%, transparent);
+      display: flex;
+      align-items: center;
+      padding: 60px;
+    }
+
+    .photo-text {
+      max-width: 380px;
+    }
+
+    .photo-text .section-eyebrow { margin-bottom: 12px; }
+
+    .photo-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .photo-attr {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      background: var(--cream-2);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .price-big {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(56px, 10vw, 96px);
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1;
+    }
+
+    .price-unit {
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+
+    .price-includes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .price-item {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price-item::before {
+      content: '—';
+      color: var(--gold);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--brown);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta-section .section-title { color: var(--white); margin-bottom: 12px; }
+    .cta-section .section-body { color: rgba(255,255,255,0.5); margin: 0 auto 40px; }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 16px 40px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: var(--gold); color: var(--brown); }
+
+    /* ── QR SECTION ── */
+    .qr-section {
+      padding: 60px 24px;
+      text-align: center;
+      border-top: 1px solid var(--cream-2);
+    }
+
+    .qr-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .qr-placeholder {
+      width: 140px;
+      height: 140px;
+      border: 2px solid var(--cream-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .qr-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      padding: 32px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(200,150,90,0.2);
+    }
+
+    footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 1px;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .photo-overlay { padding: 32px 24px; }
+      .photo-text { max-width: 100%; }
+      .products-grid { grid-template-columns: 1fr; }
+      .volume-grid { grid-template-columns: 1fr !important; }
+      .price-tier-row { font-size: 13px !important; }
+    }
+
+    /* ── TIERED PRICING TABLE ── */
+    .price-card {
+      background: var(--white);
+      border: 1px solid var(--cream-2);
+      border-radius: 6px;
+      padding: 28px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .price-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--brown);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .price-card-sub {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .price-tier-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 4px;
+      border-bottom: 1px solid var(--cream-2);
+      font-size: 14px;
+      color: var(--text);
+    }
+    .price-tier-row:last-child { border-bottom: none; }
+    .price-tier-row .tier-qty { color: var(--muted); }
+    .price-tier-row .tier-price { font-weight: 500; color: var(--brown); }
+    .price-tier-row.highlight {
+      background: var(--cream);
+      margin: 0 -12px;
+      padding: 12px 16px;
+      border-radius: 4px;
+    }
+    .tier-quote { color: var(--gold); font-weight: 500; }
+
+    /* ── VOLUME / FRESH SECTION ── */
+    .volume-section {
+      background: var(--cream-2);
+      padding: 80px 24px;
+    }
+
+    .volume-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .volume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .volume-example {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 32px;
+      border-radius: 8px;
+    }
+
+    .volume-example-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .volume-example-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+    }
+    .volume-example-row:last-child { border-bottom: none; }
+    .volume-example-row .ve-label { color: rgba(255,255,255,0.6); }
+    .volume-example-row .ve-value { color: var(--gold); font-weight: 500; }
+
+    /* ── GRIND OPTIONS ── */
+    .grind-note {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .grind-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--cream-2);
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .grind-pill span { color: var(--gold); }
+
+    /* ── CUSTOMIZATION CARDS ── */
+    .customization-wrap {
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+    .custom-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: left;
+    }
+    .custom-card {
+      background: var(--white);
+      border: 1px solid var(--cream-2);
+      border-radius: 8px;
+      padding: 28px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .custom-card.featured {
+      border: 2px solid var(--gold);
+      box-shadow: 0 8px 30px rgba(200,150,90,0.15);
+    }
+    .custom-card-badge {
+      position: absolute;
+      top: -11px;
+      left: 24px;
+      background: var(--gold);
+      color: var(--brown);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 3px;
+    }
+    .custom-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--brown);
+      margin-bottom: 2px;
+    }
+    .custom-card-tagline {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .custom-card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .custom-card-feature {
+      font-size: 12px;
+      color: var(--text);
+      padding: 6px 0;
+      border-top: 1px solid var(--cream-2);
+    }
+    .custom-card-feature.muted { color: var(--muted); font-style: italic; }
+
+    /* ── FREE SHIPPING BANNER ── */
+    .free-ship-banner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+      margin: 32px auto 0;
+      background: var(--brown);
+      color: var(--cream);
+      padding: 24px 28px;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .free-ship-icon { font-size: 32px; flex-shrink: 0; }
+    .free-ship-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .free-ship-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .custom-cards { grid-template-columns: 1fr; }
+      .free-ship-banner { flex-direction: column; text-align: center; }
+    }
+
+    /* ── CUSTOM HERO IMAGE ── */
+    .custom-hero-img {
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 12px 40px rgba(44,26,14,0.12);
+    }
+    .custom-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── POCKET BREW IMAGE ── */
+    .pocketbrew-img {
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .pocketbrew-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">A message for <span data-company>your team</span></p>
+    <h1 class="hero-greeting">Hi <span data-company>there</span>,<br>glad you got <em>our sample.</em></h1>
+    <p class="hero-sub">Inside that box is Brazilian specialty coffee, roasted fresh and sourced directly from family farms. We hope it makes your guests' first morning unforgettable.</p>
+    <a href="https://shop.wholesale.damata.coffee" class="btn-primary">Make Your First Order</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-bar-text">Damata Coffee · Brazilian Specialty Coffee · Direct from the Farm</div>
+</div>
+
+<!-- WHAT'S IN THE BOX -->
+<section class="box-section">
+  <p class="section-eyebrow">What you received</p>
+  <h2 class="section-title" style="color:var(--white);">Everything in the box, explained.</h2>
+  <p class="section-body">We put together this sample kit so you could experience exactly what your guests would receive — before committing to anything.</p>
+
+  <div class="box-items">
+    <div class="box-item">
+      <div class="box-icon">☕</div>
+      <p class="box-item-title">The Coffee</p>
+      <p class="box-item-desc">Brazilian specialty beans, roasted fresh within days of shipping.</p>
+    </div>
+    <div class="box-item">
+      <div class="box-icon">🏷️</div>
+      <p class="box-item-title">Your Brand</p>
+      <p class="box-item-desc">Your logo on the bag, crafted by Damata Coffee. Your guests wake up to a branded experience backed by Brazilian specialty coffee.</p>
+    </div>
+    <div class="box-item">
+      <div class="box-icon">⭐</div>
+      <p class="box-item-title">The Review Card</p>
+      <p class="box-item-desc">A small welcome card with a QR code asking guests for a 5-star review.</p>
+    </div>
+    <div class="box-item">
+      <div class="box-icon">🚚</div>
+      <p class="box-item-title">Biweekly Delivery</p>
+      <p class="box-item-desc">Fresh beans every two weeks, so guests always get the best cup.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section class="section">
+  <p class="section-eyebrow">From Brazil to your guests</p>
+  <h2 class="section-title">Coffee that comes from somewhere real.</h2>
+  <div class="divider"></div>
+  <p class="section-body">We source directly from small family farms in the mountains of Brazil — the same families who have been growing coffee for generations. No middlemen, no warehouses, no months-old beans. Just fresh coffee with a story worth telling.</p>
+  <br><br>
+  <p class="section-body">When your guests find Damata Coffee in their unit, they're not just getting a caffeine fix. They're getting the first morning of their vacation done right.</p>
+</section>
+
+<!-- ROASTER PHOTO -->
+<div class="photo-section">
+  <img src="assets/roaster.jpg" alt="Damata Coffee being roasted">
+  <div class="photo-overlay">
+    <div class="photo-text">
+      <p class="section-eyebrow">Roasted fresh</p>
+      <p class="photo-quote">"Coffee should be crafted with heart, not mass-produced."</p>
+      <p class="photo-attr">— Vinny, Founder of Damata Coffee</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <p class="section-eyebrow" style="text-align:center;">Two ways to serve your guests</p>
+  <h2 class="section-title" style="text-align:center;">Choose the option that fits your brand.</h2>
+
+  <div class="products-grid">
+
+    <div class="product-card">
+      <span class="product-tag">Most Popular</span>
+      <h3 class="product-name">8oz Branded Bags</h3>
+      <p class="product-desc">Your logo on an 8oz bag of Brazilian specialty coffee. Every guest wakes up to your brand.</p>
+      <ul class="product-features">
+        <li>Co-brand (your logo + Damata Coffee) — lower minimum, faster launch</li>
+        <li>White label (your brand only) — fully custom packaging</li>
+        <li>Fresh roasted, delivered every two weeks</li>
+        <li>Welcome card with review QR code available</li>
+      </ul>
+    </div>
+
+    <div class="product-card">
+      <span class="product-tag">No Machine Needed</span>
+      <h3 class="product-name">Pocket Brew™</h3>
+      <p class="product-desc">Not every unit has a coffee maker. Pocket Brew delivers the same premium experience — guests just place it over a cup and pour hot water.</p>
+      <ul class="product-features">
+        <li>No machine, no filters, no cleanup</li>
+        <li>Works in any unit — condos, studios, hotel-style rooms</li>
+        <li>Your brand on every sachet</li>
+        <li>Same Brazilian specialty coffee, single-serve format</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING TABLES -->
+<section class="pricing-section">
+  <p class="section-eyebrow">Volume pricing</p>
+  <h2 class="section-title" style="margin-bottom:8px;">The more you order, the less per bag.</h2>
+  <p class="section-body" style="margin:0 auto 40px;">You already tasted it — here's exactly what it costs. Prices are per 8oz bag, and they drop as your volume grows.</p>
+
+  <div class="customization-wrap">
+    <p class="section-eyebrow" style="margin-bottom:8px;">Three ways to brand it</p>
+    <p class="section-body" style="margin:0 auto 32px;">From the bag you're holding right now to fully custom packaging — pick what fits your brand and your volume.</p>
+
+    <div class="custom-hero-img">
+      <img src="assets/whitelabel-kitchen.jpg" alt="Your branded coffee bag with a welcome card and review QR code">
+    </div>
+
+    <div class="custom-cards">
+
+      <div class="custom-card featured">
+        <span class="custom-card-badge">You have this one</span>
+        <h3 class="custom-card-title">Co-Brand</h3>
+        <p class="custom-card-tagline">Damata + your logo</p>
+        <p class="custom-card-desc">The exact bag in your sample box. Your logo goes on the back, alongside a review QR code — both included. Lowest minimum, fastest to launch.</p>
+        <div class="custom-card-feature">✓ Review QR code included</div>
+        <div class="custom-card-feature">✓ Lowest minimum order</div>
+        <div class="custom-card-feature">✓ Ready fastest</div>
+      </div>
+
+      <div class="custom-card">
+        <h3 class="custom-card-title">White Label</h3>
+        <p class="custom-card-tagline">Your brand only</p>
+        <p class="custom-card-desc">A clean bag with your logo via premium sticker — no Damata branding. A welcome card with your review QR is available separately.</p>
+        <div class="custom-card-feature">✓ Your brand only</div>
+        <div class="custom-card-feature">✓ Fast turnaround</div>
+        <div class="custom-card-feature muted">+ Welcome card sold separately</div>
+      </div>
+
+      <div class="custom-card">
+        <h3 class="custom-card-title">Full Custom Print</h3>
+        <p class="custom-card-tagline">Fully bespoke</p>
+        <p class="custom-card-desc">Your brand printed directly onto the packaging for a completely custom look. Available at higher volumes.</p>
+        <div class="custom-card-feature">✓ Fully bespoke packaging</div>
+        <div class="custom-card-feature">✓ Premium presentation</div>
+        <div class="custom-card-feature muted">Higher volume — ask for details</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="price-card">
+    <p class="price-card-title">8oz Branded Bags</p>
+    <p class="price-card-sub">Price per bag</p>
+    <div class="price-tier-row"><span class="tier-qty">40–99 bags</span><span class="tier-price">$9.00</span></div>
+    <div class="price-tier-row"><span class="tier-qty">100–199 bags</span><span class="tier-price">$8.50</span></div>
+    <div class="price-tier-row"><span class="tier-qty">200–399 bags</span><span class="tier-price">$8.00</span></div>
+    <div class="price-tier-row"><span class="tier-qty">400–699 bags</span><span class="tier-price">$7.50</span></div>
+    <div class="price-tier-row"><span class="tier-qty">700–1000 bags</span><span class="tier-price">$7.00</span></div>
+    <div class="price-tier-row"><span class="tier-qty">1001+ bags</span><span class="tier-quote">Request a quote</span></div>
+  </div>
+
+  <div class="free-ship-banner">
+    <span class="free-ship-icon">📦</span>
+    <div>
+      <p class="free-ship-title">Free shipping on every order over 40 bags</p>
+      <p class="free-ship-desc">Buy in volume and split it into biweekly deliveries — shipping is free every time. Order 200 bags, receive them in 5 deliveries of 40, pay zero shipping on all of them.</p>
+    </div>
+  </div>
+
+  <div class="price-card" style="margin-top:24px;">
+    <div class="pocketbrew-img">
+      <img src="assets/pocketbrew-kitchen.jpg" alt="Pocket Brew single-serve coffee box with welcome card">
+    </div>
+    <p class="price-card-title">Pocket Brew™</p>
+    <p class="price-card-sub">Single-serve sachets</p>
+    <div class="price-tier-row"><span class="tier-qty">Volume pricing</span><span class="tier-quote">Coming soon — request a quote</span></div>
+  </div>
+
+  <div class="grind-note">
+    <div class="grind-pill"><span>✓</span> Whole Bean</div>
+    <div class="grind-pill"><span>✓</span> Ground</div>
+  </div>
+  <p style="font-size:13px; color:var(--muted); margin-top:16px;">Choose whole bean or ground after your order — perfect whether your units have espresso machines with built-in grinders or simple drip setups.</p>
+
+  <a href="https://shop.wholesale.damata.coffee" class="btn-primary" style="margin-top:36px;">Make Your First Order</a>
+</section>
+
+<!-- VOLUME / FRESH MODEL -->
+<section class="volume-section">
+  <div class="volume-inner">
+    <div class="volume-grid">
+      <div>
+        <p class="section-eyebrow">Buy in volume, receive fresh</p>
+        <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px);">Lock in the best price.<br>Get it fresh, every two weeks.</h2>
+        <p class="section-body">Order a larger volume to unlock the lowest price per bag — then receive only what you need every two weeks. You get wholesale pricing and always-fresh coffee, without storing months of inventory.</p>
+        <p class="section-body" style="margin-top:16px;">After your order, just let us know how many bags you'd like each cycle. Soon you'll manage it all from your own dashboard.</p>
+      </div>
+      <div class="volume-example">
+        <p class="volume-example-label">Example</p>
+        <div class="volume-example-row"><span class="ve-label">You order</span><span class="ve-value">500 bags</span></div>
+        <div class="volume-example-row"><span class="ve-label">Price per bag</span><span class="ve-value">$7.50</span></div>
+        <div class="volume-example-row"><span class="ve-label">You receive</span><span class="ve-value">100 bags / 2 weeks</span></div>
+        <div class="volume-example-row"><span class="ve-label">Result</span><span class="ve-value">Best price, always fresh</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRYING PHOTO STRIP -->
+<div style="height:280px; overflow:hidden; position:relative;">
+  <img src="assets/drying.jpg" alt="Coffee drying in Brazil" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(0.7);">
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,32px);color:var(--white);text-align:center;letter-spacing:2px;padding:0 24px;">Direct from the mountains of Brazil.<br><em style="color:var(--gold);">From their hands to your guests' cup.</em></p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <p class="section-eyebrow" style="color:var(--gold);">You've tasted it. Now make it yours.</p>
+  <h2 class="section-title">Ready to put your brand on the bag?</h2>
+  <p class="section-body">Create your account, place your first order, and your guests' mornings get an upgrade. No long-term contracts — just great coffee.</p>
+  <div class="cta-buttons">
+    <a href="https://shop.wholesale.damata.coffee" class="btn-primary">Make Your First Order</a>
+  </div>
+  <p style="margin-top:24px; font-size:13px; color:rgba(255,255,255,0.4);">Questions first? <a href="mailto:wholesale@damata.coffee" style="color:var(--gold);">wholesale@damata.coffee</a> · 508-241-9808</p>
+</section>
+
+<!-- QR CODE -->
+<section class="qr-section">
+  <div class="qr-box">
+    <p class="qr-label">Scan to connect</p>
+    <div class="qr-placeholder">
+      [QR CODE]
+    </div>
+    <p style="font-size:12px;color:var(--muted);">wholesale@damata.coffee · 508-241-9808</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Damata Coffee · <a href="mailto:wholesale@damata.coffee">wholesale@damata.coffee</a> · <a href="tel:5082419808">508-241-9808</a> · <a href="https://damata.coffee">damata.coffee</a></p>
+  <p style="margin-top:8px;">15406 Broad Brush Dr, Sun City Center, FL 33573</p>
+</footer>
+
+<!-- Injeta o nome do prospect (?c=) no cabeçalho. Usa textContent → seguro contra XSS. -->
+<script>
+  (function(){
+    var name = (window.DAMATA_PROSPECT || '').trim();
+    if (!name) return;
+    document.querySelectorAll('[data-company]').forEach(function(el){ el.textContent = name; });
+    document.title = name + ' × Damata Coffee — Wholesale';
+  })();
+</script>
+
+</body>
+</html>
