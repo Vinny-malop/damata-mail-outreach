@@ -20,7 +20,8 @@
     window.DAMATA_CONFIG = {
       META_PIXEL_ID: 'YOUR_META_PIXEL_ID',   // Meta (Facebook/Instagram) Pixel — só os números
       GA4_ID:        'YOUR_GA4_ID',           // Google Analytics 4 — formato G-XXXXXXXXXX
-      CLARITY_ID:    'wtomtpsu8b'              // Microsoft Clarity — ID do projeto (Damata Outreach)
+      CLARITY_ID:    'wtomtpsu8b',            // Microsoft Clarity — ID do projeto (Damata Outreach)
+      WEB3FORMS_KEY: 'YOUR_WEB3FORMS_KEY'     // Web3Forms — access key p/ o feedback de quem não comprou
     };
 
     // Nome do prospect vindo da URL  (ex.: ?c=Acme%20Inc)
@@ -735,6 +736,42 @@
       height: auto;
       display: block;
     }
+
+    /* ── FEEDBACK (quem não comprou) ── */
+    .feedback-block { max-width: 440px; margin: 48px auto 0; }
+    .feedback-divider {
+      width: 48px; height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 0 auto 28px;
+    }
+    .feedback-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--white); margin-bottom: 8px;
+    }
+    .feedback-sub {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      line-height: 1.6; margin-bottom: 16px;
+    }
+    .feedback-form { display: flex; flex-direction: column; gap: 12px; }
+    .feedback-form textarea {
+      width: 100%; min-height: 84px; resize: vertical;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px; padding: 12px 14px;
+      color: var(--white); font-family: inherit; font-size: 14px;
+    }
+    .feedback-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .feedback-form textarea:focus { outline: none; border-color: var(--gold); }
+    .feedback-btn {
+      align-self: center;
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      padding: 11px 30px; font-size: 11px; letter-spacing: 2px;
+      text-transform: uppercase; cursor: pointer; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .feedback-btn:hover { background: var(--gold); color: var(--brown); }
+    .feedback-btn:disabled { opacity: 0.5; cursor: default; }
+    .feedback-status { font-size: 13px; color: var(--gold); min-height: 18px; }
   </style>
 </head>
 <body>
@@ -964,6 +1001,23 @@
     <a href="https://shop.wholesale.damata.coffee/account" class="btn-primary">Make Your First Order</a>
   </div>
   <p style="margin-top:24px; font-size:13px; color:rgba(255,255,255,0.4);">Questions first? <a href="mailto:wholesale@damata.coffee" style="color:var(--gold);">wholesale@damata.coffee</a> · 508-241-9808</p>
+
+  <!-- Feedback de quem NÃO comprou (entender objeção: preço, já tem fornecedor, etc.) -->
+  <div class="feedback-block">
+    <div class="feedback-divider"></div>
+    <p class="feedback-title">Not a fit?</p>
+    <p class="feedback-sub">We'd genuinely love to hear why — too pricey, already have a supplier, wrong timing? It helps us more than you'd think.</p>
+    <form id="feedback-form" class="feedback-form">
+      <input type="hidden" name="subject" value="Damata landing — feedback">
+      <input type="hidden" name="from_name" value="Damata Outreach Landing">
+      <input type="hidden" name="prospect" id="feedback-prospect" value="unknown">
+      <!-- honeypot anti-spam -->
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <textarea name="message" required placeholder="Any feedback is appreciated — even one line."></textarea>
+      <button type="submit" class="feedback-btn">Send feedback</button>
+      <p class="feedback-status" id="feedback-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -979,6 +1033,50 @@
     if (!name) return;
     document.querySelectorAll('[data-company]').forEach(function(el){ el.textContent = name; });
     document.title = name + ' × Damata Coffee — Wholesale';
+  })();
+
+  // ---- Feedback de quem não comprou (Web3Forms, sem sair da página) ----
+  (function(){
+    var form = document.getElementById('feedback-form');
+    if (!form) return;
+    var key = (window.DAMATA_CONFIG && DAMATA_CONFIG.WEB3FORMS_KEY) || '';
+    var status = document.getElementById('feedback-status');
+    var btn = form.querySelector('.feedback-btn');
+    var prospect = document.getElementById('feedback-prospect');
+    if (prospect) prospect.value = (window.DAMATA_PROSPECT || '').trim() || 'unknown';
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!key || key.indexOf('YOUR_') === 0) {
+        status.textContent = 'Thanks! (feedback form not live yet)';
+        return;
+      }
+      btn.disabled = true;
+      status.textContent = 'Sending…';
+      var payload = Object.fromEntries(new FormData(form));
+      payload.access_key = key;
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.success) {
+          form.querySelector('textarea').value = '';
+          btn.style.display = 'none';
+          status.textContent = 'Thanks — really appreciate it. 🙏';
+          if (window.clarity) window.clarity('set', 'gave_feedback', 'yes');
+        } else {
+          status.textContent = 'Hmm, that didn’t go through. Email wholesale@damata.coffee?';
+          btn.disabled = false;
+        }
+      })
+      .catch(function(){
+        status.textContent = 'Hmm, that didn’t go through. Email wholesale@damata.coffee?';
+        btn.disabled = false;
+      });
+    });
   })();
 </script>
 
