@@ -27,13 +27,6 @@
     // Nome do prospect vindo da URL  (ex.: ?c=Acme%20Inc)
     window.DAMATA_PROSPECT = (new URLSearchParams(location.search).get('c') || '').trim();
 
-    // Prospects com landing DEDICADA → redireciona (mantém o QR ?c= impresso funcionando).
-    // Roda antes de qualquer tracking pra não duplicar pageview no index.
-    var DAMATA_DEDICATED = { 'Holiday Beach Rentals': 'holiday-beach-rentals.html' };
-    if (DAMATA_DEDICATED[window.DAMATA_PROSPECT]) {
-      location.replace(DAMATA_DEDICATED[window.DAMATA_PROSPECT] + location.search);
-    }
-
     function damataEnabled(id){ return id && id.indexOf('YOUR_') !== 0; }
 
     // gtag precisa existir no escopo global
@@ -828,8 +821,10 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1 class="hero-greeting">Hi <span data-company>there</span>,<br>glad you got <em>our sample.</em></h1>
-    <p class="hero-sub">Inside that box is Brazilian specialty coffee, roasted fresh and sourced directly from family farms. We hope it makes your guests' first morning unforgettable.</p>
+    <h1 class="hero-greeting">Hi Pam,</h1>
+    <p class="hero-sub" style="margin-bottom:16px;">Thank you again for giving me the opportunity to send this over.</p>
+    <p class="hero-sub" style="margin-bottom:16px;">As promised, I put together a simple example of what branded coffee could look like for Holiday Beach Rentals.</p>
+    <p class="hero-sub">Your team already creates the kind of stay where small details matter. I thought the first cup of coffee could feel like part of that experience too.</p>
     <a href="https://shop.wholesale.damata.coffee/account" class="btn-primary">Make Your First Order</a>
   </div>
 </section>
@@ -842,66 +837,56 @@
 <!-- WHAT'S IN THE BOX -->
 <section class="box-section">
   <p class="section-eyebrow">What you received</p>
-  <h2 class="section-title" style="color:var(--white);">Everything in the box, explained.</h2>
-  <p class="section-body">We put together this sample kit so you could experience exactly what your guests would receive — before committing to anything.</p>
+  <h2 class="section-title" style="color:var(--white);">What this could look like for Holiday Beach Rentals.</h2>
+  <p class="section-body">The sample box is a small preview of how your brand could show up during one of the first moments of your guests' stay.</p>
 
   <div class="box-items">
     <div class="box-item">
       <div class="box-icon">☕</div>
       <p class="box-item-title">The Coffee</p>
-      <p class="box-item-desc">Brazilian specialty beans, roasted fresh within days of shipping.</p>
+      <p class="box-item-desc">Fresh Brazilian specialty coffee prepared for your guests' first morning.</p>
     </div>
     <div class="box-item">
       <div class="box-icon">🏷️</div>
       <p class="box-item-title">Your Brand</p>
-      <p class="box-item-desc">Your logo on the bag, crafted by Damata Coffee. Your guests wake up to a branded experience backed by Brazilian specialty coffee.</p>
+      <p class="box-item-desc">Holiday Beach Rentals on the bag, turning coffee into a branded guest touchpoint.</p>
     </div>
     <div class="box-item">
       <div class="box-icon">⭐</div>
-      <p class="box-item-title">The Review Card</p>
-      <p class="box-item-desc">A small welcome card with a QR code asking guests for a 5-star review.</p>
+      <p class="box-item-title">The Review Moment</p>
+      <p class="box-item-desc">A simple way to connect a thoughtful detail with a natural review ask.</p>
     </div>
     <div class="box-item">
       <div class="box-icon">🚚</div>
-      <p class="box-item-title">Biweekly Delivery</p>
-      <p class="box-item-desc">Fresh beans every two weeks, so guests always get the best cup.</p>
+      <p class="box-item-title">Fresh Delivery</p>
+      <p class="box-item-desc">Shipments can be scheduled around your needs, so your team does not have to store months of coffee.</p>
     </div>
   </div>
 </section>
 
 <!-- THE STORY -->
 <section class="section">
-  <p class="section-eyebrow">From Brazil to your guests</p>
-  <h2 class="section-title">Coffee that comes from somewhere real.</h2>
+  <p class="section-eyebrow">The thought behind it</p>
+  <h2 class="section-title">Why I thought this fit Holiday Beach Rentals.</h2>
   <div class="divider"></div>
-  <p class="section-body">We source directly from small family farms in the mountains of Brazil — the same families who have been growing coffee for generations. No middlemen, no warehouses, no months-old beans. Just fresh coffee with a story worth telling.</p>
+  <p class="section-body">Holiday Beach Rentals already presents itself around comfort, quality, and memorable stays. Coffee is one more small detail guests interact with directly — usually during the first quiet moment of the morning.</p>
   <br><br>
-  <p class="section-body">When your guests find Damata Coffee in their unit, they're not just getting a caffeine fix. They're getting the first morning of their vacation done right.</p>
+  <p class="section-body">That moment can become part of a memory, a review, or even a photo a guest chooses to share.</p>
 </section>
 
-<!-- ROASTER PHOTO -->
-<div class="photo-section">
-  <img src="assets/roaster.jpg" alt="Damata Coffee being roasted">
-  <div class="photo-overlay">
-    <div class="photo-text">
-      <p class="section-eyebrow">Roasted fresh</p>
-      <p class="photo-quote">"Coffee should be crafted with heart, not mass-produced."</p>
-      <p class="photo-attr">— Vinny, Founder of Damata Coffee</p>
-    </div>
-  </div>
-</div>
+<!-- (roaster photo + founder quote removed for Holiday Beach Rentals — keep focus on the customer) -->
 
 <!-- PRODUCTS -->
 <section class="products">
   <p class="section-eyebrow" style="text-align:center;">Two ways to serve your guests</p>
-  <h2 class="section-title" style="text-align:center;">Choose the option that fits your brand.</h2>
+  <h2 class="section-title" style="text-align:center;">Choose the format that fits each property.</h2>
 
   <div class="products-grid">
 
     <div class="product-card">
       <span class="product-tag">Most Popular</span>
       <h3 class="product-name">8oz Branded Bags</h3>
-      <p class="product-desc">Your logo on an 8oz bag of Brazilian specialty coffee. Every guest wakes up to your brand.</p>
+      <p class="product-desc">Best for homes with a coffee setup already in place. Guests receive a branded bag of fresh coffee that feels intentional, premium, and connected to Holiday Beach Rentals.</p>
       <ul class="product-features">
         <li>Co-brand (your logo + Damata Coffee) — lower minimum, faster launch</li>
         <li>White label (your brand only) — fully custom packaging</li>
@@ -913,7 +898,7 @@
     <div class="product-card">
       <span class="product-tag">No Machine Needed</span>
       <h3 class="product-name">Pocket Brew™</h3>
-      <p class="product-desc">Not every unit has a coffee maker. Pocket Brew delivers the same premium experience — guests just place it over a cup and pour hot water.</p>
+      <p class="product-desc">Best for units where a full coffee setup is not practical. Guests only need hot water, a cup, and a few minutes.</p>
       <ul class="product-features">
         <li>No machine, no filters, no cleanup</li>
         <li>Works in any unit — condos, studios, hotel-style rooms</li>
@@ -945,7 +930,7 @@
         <span class="custom-card-badge">You have this one</span>
         <h3 class="custom-card-title">Co-Brand</h3>
         <p class="custom-card-tagline">Damata + your logo</p>
-        <p class="custom-card-desc">The exact bag in your sample box. Your logo goes on the back, alongside a review QR code — both included. Lowest minimum, fastest to launch.</p>
+        <p class="custom-card-desc">The fastest way to launch. Damata handles the coffee and packaging while Holiday Beach Rentals appears directly on the bag.</p>
         <div class="custom-card-feature">✓ Review QR code included</div>
         <div class="custom-card-feature">✓ Lowest minimum order</div>
         <div class="custom-card-feature">✓ Ready fastest</div>
@@ -954,7 +939,7 @@
       <div class="custom-card">
         <h3 class="custom-card-title">White Label</h3>
         <p class="custom-card-tagline">Your brand only</p>
-        <p class="custom-card-desc">A clean bag with your logo via premium sticker — no Damata branding. A welcome card with your review QR is available separately.</p>
+        <p class="custom-card-desc">A cleaner brand-forward option with Holiday Beach Rentals as the primary brand on the bag.</p>
         <div class="custom-card-feature">✓ Your brand only</div>
         <div class="custom-card-feature">✓ Fast turnaround</div>
         <div class="custom-card-feature muted">+ Welcome card sold separately</div>
@@ -963,7 +948,7 @@
       <div class="custom-card">
         <h3 class="custom-card-title">Full Custom Print</h3>
         <p class="custom-card-tagline">Fully bespoke</p>
-        <p class="custom-card-desc">Your brand printed directly onto the packaging for a completely custom look. Available at higher volumes.</p>
+        <p class="custom-card-desc">For larger rollouts where the packaging should feel fully built around Holiday Beach Rentals.</p>
         <div class="custom-card-feature">✓ Fully bespoke packaging</div>
         <div class="custom-card-feature">✓ Premium presentation</div>
         <div class="custom-card-feature muted">Higher volume — ask for details</div>
@@ -1041,26 +1026,26 @@
 
 <!-- CTA -->
 <section class="cta-section" id="cta">
-  <p class="section-eyebrow" style="color:var(--gold);">You've tasted it. Now make it yours.</p>
-  <h2 class="section-title">Ready to put your brand on the bag?</h2>
-  <p class="section-body">Create your account, place your first order, and your guests' mornings get an upgrade. No long-term contracts — just great coffee.</p>
+  <p class="section-eyebrow" style="color:var(--gold);">The next step</p>
+  <h2 class="section-title">Want to see what this could look like across your properties?</h2>
+  <p class="section-body">If this feels like a fit, I'd be happy to put together a simple recommendation for Holiday Beach Rentals based on property size, guest count, and delivery frequency.</p>
   <div class="cta-buttons">
-    <a href="https://shop.wholesale.damata.coffee/account" class="btn-primary">Make Your First Order</a>
+    <a href="#recommend" class="btn-primary">Request a recommendation</a>
   </div>
   <p style="margin-top:24px; font-size:13px; color:rgba(255,255,255,0.4);">Questions first? <a href="mailto:wholesale@damata.coffee" style="color:var(--gold);">wholesale@damata.coffee</a> · 508-241-9808</p>
 
   <!-- Feedback de quem NÃO comprou (entender objeção: preço, já tem fornecedor, etc.) -->
   <div class="feedback-block">
     <div class="feedback-divider"></div>
-    <p class="feedback-title">Not a fit?</p>
-    <p class="feedback-sub">We'd really love to hear your thoughts.</p>
+    <p class="feedback-title">Not sure yet?</p>
+    <p class="feedback-sub">I'd genuinely love to hear what you and your executive team think.</p>
     <form id="feedback-form" class="feedback-form">
       <input type="hidden" name="subject" value="Damata landing — feedback">
       <input type="hidden" name="from_name" value="Damata Outreach Landing">
       <input type="hidden" name="prospect" id="feedback-prospect" value="unknown">
       <!-- honeypot anti-spam -->
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-      <textarea name="message" required placeholder="Any feedback is appreciated."></textarea>
+      <textarea name="message" required placeholder="Even a quick note helps."></textarea>
       <button type="submit" class="feedback-btn">Send feedback</button>
       <p class="feedback-status" id="feedback-status" role="status" aria-live="polite"></p>
     </form>
@@ -1109,15 +1094,30 @@
     </details>
 
     <details class="faq-item">
-      <summary>How soon can I get started?</summary>
-      <div class="faq-answer">Create your account and place your first order at the <a href="https://shop.wholesale.damata.coffee/account">wholesale shop</a> — Co-Brand is the fastest to launch. Prefer to talk it through first? Use the form just below.</div>
+      <summary>Who handles the customization?</summary>
+      <div class="faq-answer">Damata handles the label setup, packaging, and coffee. Once we have the logo and basic brand assets, we prepare the artwork and send it for approval before production.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can different properties receive different amounts?</summary>
+      <div class="faq-answer">Yes. Larger homes can receive more bags, while smaller units can receive less. The program can be adjusted based on property size, guest count, and occupancy.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can we choose whole bean or ground?</summary>
+      <div class="faq-answer">Yes. Bags can be whole bean or ground depending on the setup inside each property.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How quickly can this launch?</summary>
+      <div class="faq-answer">Most programs can launch within 2–4 weeks after artwork approval, depending on volume and packaging needs.</div>
     </details>
 
     <!-- STILL NOT SURE / LET'S TALK -->
-    <div class="talk-block">
+    <div class="talk-block" id="recommend">
       <div class="talk-divider"></div>
-      <p class="talk-title">Still not sure? Let's talk.</p>
-      <p class="talk-sub">Tell us what you're weighing and we'll get right back to you — no pressure.</p>
+      <p class="talk-title">Have a question or want a recommendation?</p>
+      <p class="talk-sub">Send a quick note and I'll personally reply.</p>
       <form id="talk-form" class="talk-form">
         <input type="hidden" name="subject" value="Damata landing — Let's talk (lead)">
         <input type="hidden" name="from_name" value="Damata Outreach Landing">
