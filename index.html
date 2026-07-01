@@ -772,6 +772,46 @@
     .feedback-btn:hover { background: var(--gold); color: var(--brown); }
     .feedback-btn:disabled { opacity: 0.5; cursor: default; }
     .feedback-status { font-size: 13px; color: var(--gold); min-height: 18px; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--cream); padding: 80px 24px; }
+    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-inner .section-eyebrow { text-align: center; }
+    .faq-inner > .section-title { text-align: center; margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid var(--cream-2); }
+    .faq-item summary {
+      list-style: none; cursor: pointer; padding: 22px 4px;
+      font-family: 'Playfair Display', serif; font-size: 19px; color: var(--brown);
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--gold); font-size: 24px; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '\2013'; }
+    .faq-answer { padding: 0 4px 24px; font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .faq-answer strong { color: var(--text); font-weight: 500; }
+    .faq-answer a { color: var(--brown-mid); }
+
+    /* ── LET'S TALK FORM ── */
+    .talk-block { max-width: 480px; margin: 64px auto 0; text-align: center; }
+    .talk-divider { width: 48px; height: 2px; background: var(--gold); margin: 0 auto 28px; }
+    .talk-title { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--brown); margin-bottom: 8px; }
+    .talk-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .talk-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .talk-form input, .talk-form textarea {
+      width: 100%; background: var(--white); border: 1px solid var(--cream-2);
+      border-radius: 6px; padding: 13px 15px; font-family: inherit; font-size: 15px; color: var(--text);
+    }
+    .talk-form textarea { min-height: 96px; resize: vertical; }
+    .talk-form input::placeholder, .talk-form textarea::placeholder { color: var(--muted); }
+    .talk-form input:focus, .talk-form textarea:focus { outline: none; border-color: var(--gold); }
+    .talk-btn {
+      align-self: center; margin-top: 4px; background: var(--gold); color: var(--brown);
+      border: none; padding: 15px 40px; font-size: 12px; letter-spacing: 3px;
+      text-transform: uppercase; font-weight: 500; cursor: pointer; transition: background 0.2s;
+    }
+    .talk-btn:hover { background: #b5813f; }
+    .talk-btn:disabled { opacity: 0.5; cursor: default; }
+    .talk-status { font-size: 13px; color: var(--brown-mid); min-height: 18px; text-align: center; }
   </style>
 </head>
 <body>
@@ -1020,6 +1060,72 @@
   </div>
 </section>
 
+<!-- FAQ + LET'S TALK -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <p class="section-eyebrow">Questions</p>
+    <h2 class="section-title">Everything you're probably wondering.</h2>
+
+    <details class="faq-item">
+      <summary>What exactly would I be ordering?</summary>
+      <div class="faq-answer">The same Brazilian specialty coffee that's in your sample box — either 8oz bags (whole bean or ground) or single-serve Pocket Brew sachets — with your logo on the packaging, ready to place in your units.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is there a minimum order?</summary>
+      <div class="faq-answer">Yes, but it's small: 40 bags to start — which also unlocks free shipping. No big upfront commitment; begin there and scale as it works for you.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How does the pricing work?</summary>
+      <div class="faq-answer">It's volume-based. 8oz bags run from $9 down to $7 per bag as your volume grows, and Pocket Brew starts at $1 per sachet. You lock in a volume price once, then receive fresh coffee every two weeks.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do I have to store months of coffee?</summary>
+      <div class="faq-answer">No. You get the volume price but receive only what you need each cycle — every two weeks — so your guests always get freshly roasted beans and you never warehouse inventory.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What if some of my units don't have a coffee maker?</summary>
+      <div class="faq-answer">That's exactly what <strong>Pocket Brew</strong> is for — a single-serve pour-over sachet. No machine, no filter, no cleanup. It works in any unit, branded with your logo.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I put my own brand on it?</summary>
+      <div class="faq-answer">Three ways: <strong>Co-Brand</strong> (your logo + Damata — the bag in your box, fastest and lowest minimum), <strong>White Label</strong> (your brand only, via a premium sticker), or <strong>Full Custom Print</strong> (fully bespoke packaging, at higher volume).</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Am I locked into a contract?</summary>
+      <div class="faq-answer">No long-term contracts and no lock-in. Adjust your biweekly quantity, pause, or stop anytime — you're always in control.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How soon can I get started?</summary>
+      <div class="faq-answer">Create your account and place your first order at the <a href="https://shop.wholesale.damata.coffee/account">wholesale shop</a> — Co-Brand is the fastest to launch. Prefer to talk it through first? Use the form just below.</div>
+    </details>
+
+    <!-- STILL NOT SURE / LET'S TALK -->
+    <div class="talk-block">
+      <div class="talk-divider"></div>
+      <p class="talk-title">Still not sure? Let's talk.</p>
+      <p class="talk-sub">Tell us what you're weighing and we'll get right back to you — no pressure.</p>
+      <form id="talk-form" class="talk-form">
+        <input type="hidden" name="subject" value="Damata landing — Let's talk (lead)">
+        <input type="hidden" name="from_name" value="Damata Outreach Landing">
+        <input type="hidden" name="prospect" id="talk-prospect" value="unknown">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="text" name="name" required placeholder="Your name">
+        <input type="email" name="email" required placeholder="Email (so we can reply)">
+        <textarea name="message" required placeholder="What's on your mind? Questions, concerns, anything."></textarea>
+        <button type="submit" class="talk-btn">Send</button>
+        <p class="talk-status" id="talk-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <p>© 2025 Damata Coffee · <a href="mailto:wholesale@damata.coffee">wholesale@damata.coffee</a> · <a href="tel:5082419808">508-241-9808</a> · <a href="https://damata.coffee">damata.coffee</a></p>
@@ -1074,6 +1180,50 @@
       })
       .catch(function(){
         status.textContent = 'Hmm, that didn’t go through. Email wholesale@damata.coffee?';
+        btn.disabled = false;
+      });
+    });
+  })();
+
+  // ---- "Let's talk" lead form (Web3Forms) ----
+  (function(){
+    var form = document.getElementById('talk-form');
+    if (!form) return;
+    var key = (window.DAMATA_CONFIG && DAMATA_CONFIG.WEB3FORMS_KEY) || '';
+    var status = document.getElementById('talk-status');
+    var btn = form.querySelector('.talk-btn');
+    var prospect = document.getElementById('talk-prospect');
+    if (prospect) prospect.value = (window.DAMATA_PROSPECT || '').trim() || 'unknown';
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!key || key.indexOf('YOUR_') === 0) {
+        status.textContent = 'Thanks! (form not live yet)';
+        return;
+      }
+      btn.disabled = true;
+      status.textContent = 'Sending…';
+      var payload = Object.fromEntries(new FormData(form));
+      payload.access_key = key;
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.success) {
+          btn.style.display = 'none';
+          form.querySelectorAll('input[type=text], input[type=email], textarea').forEach(function(el){ el.style.display = 'none'; });
+          status.textContent = 'Got it — we\'ll be in touch shortly. 🙏';
+          if (window.clarity) window.clarity('set', 'lets_talk', 'yes');
+        } else {
+          status.textContent = 'Hmm, that didn\'t go through. Email wholesale@damata.coffee?';
+          btn.disabled = false;
+        }
+      })
+      .catch(function(){
+        status.textContent = 'Hmm, that didn\'t go through. Email wholesale@damata.coffee?';
         btn.disabled = false;
       });
     });
