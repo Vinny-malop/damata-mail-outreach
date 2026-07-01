@@ -1137,7 +1137,10 @@
   (function(){
     var name = (window.DAMATA_PROSPECT || '').trim();
     if (!name) return;
-    document.querySelectorAll('[data-company]').forEach(function(el){ el.textContent = name; });
+    // Override de saudação por prospect (ex.: lead quente que respondeu — usa o 1º nome da pessoa).
+    var GREETING = { 'Holiday Beach Rentals': 'Pam' };
+    var greet = GREETING[name] || name;
+    document.querySelectorAll('[data-company]').forEach(function(el){ el.textContent = greet; });
     document.title = name + ' × Damata Coffee — Wholesale';
   })();
 
